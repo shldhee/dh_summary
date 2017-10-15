@@ -179,4 +179,130 @@ module.exports = {
 <link rel="stylesheet" href="./dist/styles.css">
 ```
 
-## plugins
+## plugin
+
+* 플러그인은 파일별 커스텀 기능을 사용하기 위해서 사용한다.
+
+굳이 구분하자면
+로더 웹팩 빌딩할때 번들링하면서 작업 처리하면서 중간 개입
+플러그인 번들링 끝나고 마지막 결과값을 낼때 관여한다.
+
+``` js
+module.exports = {
+  entry: {},
+  output: {},
+  module: {},
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin() // 용량 줄이는 라이브러리
+  ]
+}
+```
+
+### plugin 종류
+
+#### ProvidePlugins
+
+* 모든 모듈에서 사용할 수 있도록 모듈을 변수로 변환한다.
+* import, require, script 파일로 로드할 필요없이 번들링되고 난뒤 전역변수로 선언한다.
+
+``` js
+new webpack.ProvidePlugin({
+  $: "jquery"
+})
+```
+
+#### DefinePlugin
+
+* Webpack 번들링을 시작하는 시점에 사용 가능한 상수들을 정의한다.
+* 일반적으로 계발계 & 테스트계에 따라 다른 설정을 적용할 때 유용하다
+
+``` js
+new webpack.DefinePlugin({
+  PRODUCTION: JSON.stringify(true),
+  VERSION: JSON.stringify("5fa3b9"),
+  BROWSER_SUPPORTS_HTML5: true,
+  TWO: "1+1",
+  "typeof window": JSON.stringify("object")
+})
+```
+
+#### ManifestPlugin
+
+* 번들링시 생성되는 코드 (라이브러리)에 대한 정보를 json 파일로 저장하여 관리
+* 라이브러르가 많을 시에 유용
+
+``` js
+  new ManifestPlugin({
+    fileName: 'manifest.json',
+    basePath: './dist'
+  })
+```
+
+## Libraries Code Splitting
+
+``` js
+var webpack = require('webpack');
+var path = require('path');
+
+module.exports = {
+  entry: {
+    main: './app/index.js', // main 내용
+    vendor: [ // 제 3 라이브러리 써드파티 라이브러리 모음
+      'moment',
+      'lodash'
+    ]
+  },
+  output: {
+    filename: '[name].js', // main.js, vendor.js 생성
+    path: path.resolve(__dirname, 'dist')
+  }
+}
+```
+
+``` js
+var moment = require('moment');
+var _ = require('lodash');
+var ele = document.querySelectorAll('p');
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  ele[0].innerText = moment().format();
+  ele[1].innerText = _.drop([1, 2, 3], 0);
+});
+```
+
+* `dist/main.js`,`dist/vender.js` 생성
+* 하지만 main에 lodash, moment 내용이 있으면 즉 main.js와 vendor.js와 같아서 중복작업임
+* 이걸 해결하기 위해 `Plugin` 사용
+
+``` js
+plugins: [
+  new webpack.optimize.CommonsChunkPlugin({ // 공통적으로 사용하는 라이브러리는 공통(커먼)으로 사용하겠다 하고 따로 빼기
+    //name: 'vendor' // Specify the common bundle's name. (entry name)
+    names: ['vendor', 'manifest'] // Extract the webpack bootstrap logic into manifest.js
+    // menifest 는 초기화 코드를 따로 빼 분리해서 생성된다.(웹팩 초기화 로직)
+  }),
+]
+```
+
+* `dist/vendor.js`에는 라이브러리(moment, lodash), `dist/main.js`에는 index.js 본문 내용만 용량이 팍 줄어들었다.
+
+
+### Mainifest Plugin
+
+``` js
+var ManifestPlugin = require('webpack-manifest-plugin');
+
+new ManifestPlugin({
+  fileName: 'manifest.json',
+  basePath: './dist/'
+})
+```
+
+*manifest.json*
+``` json
+{
+  "./dist/main.js": "./dist/main.js",
+  "./dist/manifest.js": "./dist/manifest.js",
+  "./dist/vendor.js": "./dist/vendor.js"
+}
+```
