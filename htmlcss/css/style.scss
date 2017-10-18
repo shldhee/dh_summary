@@ -1,0 +1,64 @@
+$main-width: 100%;
+$margin-auto: 0 auto;
+$main-color: PeachPuff;
+$wrap-bg : LightSeaGreen;
+
+#wrap {
+  max-width: 960px;
+  width: $main-width;
+  margin: $margin-auto;
+  color: $main-color;
+  background-color: $wrap-bg;
+  .top {
+    padding-top:56%;
+    position: relative;
+    .cover-video {
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+    }
+    img {
+      position: absolute;
+      max-width: 100%;
+    }
+    img {
+     -webkit-transition: all 2s; // Chrome
+     -moz-transition: all 2s; // Mozilla
+     -o-transition: all 2s; // Opera
+     transition: all 2s;
+    }
+    .icon1 {
+      top: -50%;
+      left: -50%;
+    }
+    .icon2 {
+      top: -50%;
+      right: -50%;
+    }
+    .icon3 {
+      bottom: -50%;
+      left: -50%;
+    }
+    .icon4 {
+      bottom: -50%;
+      right: -50%;
+    }
+    .icon1.on {
+      top: 10%;
+      left: 10%;
+    }
+    .icon2.on {
+      top: 10%;
+      right: 10%;
+    }
+    .icon3.on {
+      bottom: 10%;
+      left: 10%;
+    }
+    .icon4.on {
+      bottom: 10%;
+      right: 10%;
+    }
+  }
+}
