@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>인천 바로콜 서비스 시범운행 안내</title>
+
+<style>
+	body, p {margin: 0; padding: 0;}
+	img {vertical-align: top;}
+	p a {display: block;}
+	.today_check {background-color: #222; color: #FFF; font-size: 11px; padding: 5px; position: relative;}
+	.today_check input, .today_check input label {vertical-align: middle;}
+	.today_check a {color: #FFF; position: absolute; top: 10px; right: 5px;}
+</style>
+<script type="text/javascript">
+	<!--
+	function setCookie( name, value, expiredays ){
+		var todayDate = new Date();
+		todayDate.setDate( todayDate.getDate() + expiredays );
+		todayDate.setHours(0);
+		todayDate.setMinutes(0);
+		todayDate.setSeconds(0);
+		document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	}
+
+	function colse_day(){
+		if ( document.popup.chkbox.checked )
+		setCookie( "cookie07", "done" , 1);
+		self.close();
+	}
+	function close_window(){
+		self.close();
+	}
+	function link_blank(url){
+		window.open(url);
+		self.close();
+	}
+	// -->
+</script>
+
+</head>
+<body>
+
+<form name="popup">
+	<p><a href="javascript:;" ><img src="/mbshome/mbs/calltaxi/images/main/popup_170904.png" alt="인천 바로콜 서비스 시범운행 안내" /></a></p>
+	<div class="today_check">
+		<input type="checkbox" name="chkbox" onclick="colse_day();" id="toClose" /> <label for="toClose"">오늘하루열지않기</label>
+		<a href="javascript:;" onclick="close_window();">닫기</a>
+	</div>
+</form>
+
+</body>
+</html>

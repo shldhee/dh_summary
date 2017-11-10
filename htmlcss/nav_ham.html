@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #wrap {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      background-color: lavender;
+    }
+
+    .ham:before, .ham:after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 5px;
+      background-color: gray;
+      position: absolute;
+      transition: all 0.5s;
+    }
+    .ham:before {
+      top:-10px;
+    }
+    .ham:after {
+      top:10px;
+    }
+    .ham {
+      width: 30px;
+      height: 5px;
+      background-color: gray;
+      position: relative;
+      transform: translate(100px, 100px);
+      margin-left: -10px;
+      margin-top: -3px;
+      transition: all 0.5s;
+    }
+
+    .nav-toggle:checked ~ .ham {
+      background: transparent;
+    }
+    .nav-toggle:checked ~ .ham:before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+    .nav-toggle:checked ~ .ham:after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+      <input type="checkbox" name="" class="nav-toggle" id="input">CheckCheck</label>
+      <div class="ham" id="input"></div>
+  </div>
+</body>
+</html>

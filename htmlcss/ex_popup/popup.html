@@ -1,0 +1,37 @@
+<!-- 팝업 추가 및 삭제 -->
+<script type="text/javascript">
+	function setCookie( name, value, expiredays ){
+		var todayDate = new Date();
+		todayDate.setDate( todayDate.getDate() + expiredays );
+		document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	}
+	function getCookie( name ){
+		var nameOfCookie = name + "=";
+		var x = 0;
+		while ( x <= document.cookie.length ) {
+			var y = (x+nameOfCookie.length);
+			if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+				if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) endOfCookie = document.cookie.length;
+				return unescape( document.cookie.substring( y, endOfCookie ) );
+			}
+			x = document.cookie.indexOf( " ", x ) + 1;
+			if ( x == 0 ) break;
+		}
+		return "";
+	}
+
+	if ( getCookie( "cookie07" ) != "done" ){ //첫번째팝업
+		noticeWindow = window.open('/mbshome/mbs/calltaxi/html/popup_07.html','popup01','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=569,top=0,left=0');
+		noticeWindow.opener = self;
+	}
+	/*if ( getCookie( "cookie02" ) != "done" ){ //두번째팝업
+		noticeWindow = window.open('/mbshome/mbs/calltaxi/html/popup_02.html','popup02','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=270,height=340,top=0,left=280');
+		noticeWindow.opener = self;
+	}
+
+	if ( getCookie( "cookie06" ) != "done" ){ //세번째팝업
+		noticeWindow = window.open('/mbshome/mbs/calltaxi/html/popup_06.html','popup03','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=270,height=340,top=0,left=560');
+		noticeWindow.opener = self;
+	}*/
+
+</script>
