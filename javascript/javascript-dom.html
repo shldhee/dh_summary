@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    * { margin: 0; padding: 0; }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1 class="app__tit">자바스크립트와 제이쿼리11</h1>
+    <h1 class="app__tit">자바스크립트와 제이쿼리22</h1>
+    <h1 class="app__tit">자바스크립트와 제이쿼리33</h1>
+    <p data-product-id="G123">Guitar</p>
+  </div>
+  <script type="text/javascript">
+    var app = document.getElementById('app'); // 아이디로 찾기
+    console.log(app);
+    var app1 = document.querySelector('#app'); // 제이쿼리 선택자로 선택가능
+    console.log(app1);
+
+    var tit = document.getElementsByClassName('app__tit'); // 복수형이므로 여러개 돔을 유사 배열로 반환
+    console.log(tit);
+
+    var tit1 = document.querySelector('.app__tit'); // 돔 엘리먼트 중 첫번째만 반환
+    console.log(tit1);
+
+    var tit2 = document.querySelectorAll('.app__tit'); // 전체 검색, 배열로 반환
+    console.log(tit2);
+
+    //태그명으로 찾기 잘 사용하지 않는다. 클래스가 있으니깐?
+
+    var h1 = document.getElementsByTagName('h1');
+    console.log(h1);
+
+    var h2 = document.querySelector('h1');
+    console.log(h2);
+
+    var h3 = document.querySelectorAll('h1');
+    console.log(h3);
+
+    // $('p').data('product-id') 제이쿼리
+    var data = document.querySelector('p').dataset.productId;  // dataset11미만 지원 안한다.ㅠㅠ
+    console.log(data);
+    document.querySelector('p').dataset.productId = 'G456'
+    console.log(document.querySelector('p').dataset.productId);
+
+    // dataset 대신 getAttribute, setAttribute 사용
+    var data1 = document.querySelector('p').getAttribute('data-product-id');
+    document.querySelector('p').setAttribute('data-product-id','G456');
+    console.log(data1);
+
+    document.querySelector('.app__tit').addEventListener('click', (e) => {
+      console.log(e);
+    })
+
+    const evt = new CustomEvent('@click')
+    document.dispatchEvent(evt)
+
+    // jquery addClass랑 같은 역할 폴리필 사용해야 한다.
+    document.querySelector('#app').classList.add('active');
+    document.querySelector('#app').className += ' test'; // className은 클래스 이름이 저장된 변수이므로 이 문자열을 조작하여 클래스명을 추가/제거 가능
+
+    // document.querySelector('#app').innerHTML = 'Hello';
+
+    document.querySelectorAll('h1').forEach(v => {
+      console.log(v);
+    })
+
+  </script>
+</body>
+</html>

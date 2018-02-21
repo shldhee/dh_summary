@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    #wrap {
+      width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: lavender;
+    }
+    p {
+      background: skyblue;
+    }
+
+    .space01 {
+      white-space: normal;
+    }
+    .space02 {
+      white-space: nowrap;
+    }
+    .space03 {
+      white-space: pre;
+    }
+    .space04 {
+      white-space: pre-wrap;
+    }
+    .space05 {
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <p class="space01">white-space: normal;연속된 공백이 하나로 병합니다.
+
+
+              여기 앞뒤로 띄어쓰기 20번 했는데 1개로 됨                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora et inventore tempore sequi excepturi? Obcaecati ratione illum necessitatibus dolorum at placeat tempora, recusandae rerum tempore deserunt repellat, ipsa, distinctio suscipit!</p>
+    <p class="space02">white-space: nowrap;연속된 공백이 하나로 병합되고 줄바꿈은 없다(width값 무시)                     여기 앞뒤로 띄어쓰기 20번 했는데 1개로 됨                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora et inventore tempore sequi excepturi? Obcaecati ratione illum necessitatibus dolorum at placeat tempora, recusandae rerum tempore deserunt repellat, ipsa, distinctio suscipit!</p>
+    <p class="space03">white-space: pre;연속된 공백이 다 표시되고 줄바꿈은 없다(width값 무시)                     여기 앞뒤로 띄어쓰기 20번 했는데 다표시됨                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora et inventore tempore sequi excepturi? Obcaecati ratione illum necessitatibus dolorum at placeat tempora, recusandae rerum tempore deserunt repellat, ipsa, distinctio suscipit!</p>
+    <p class="space04">white-space: pre-wrap;연속된 공백이 다 표시되고 줄바꿈은 있다..                     여기 앞뒤로 띄어쓰기 20번 했는데 다표시됨                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora et inventore tempore sequi excepturi? Obcaecati ratione illum necessitatibus dolorum at placeat tempora, recusandae rerum tempore deserunt repellat, ipsa, distinctio suscipit!</p>
+    <p class="space05">white-space: pre-line;연속된 공백이 하나로 병합니다. normal은 여러줄바꿈해도 병합되나 pre-line이건 여러줄바꿈 그대로 나타난다.
+
+
+               여기 앞뒤로 띄어쓰기 20번 했는데 1개로 됨                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora et inventore tempore sequi excepturi? Obcaecati ratione illum necessitatibus dolorum at placeat tempora, recusandae rerum tempore deserunt repellat, ipsa, distinctio suscipit!</p>
+  </div>
+</body>
+</html>

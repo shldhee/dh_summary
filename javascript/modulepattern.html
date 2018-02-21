@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var myapp = (function () {
+      var a = 10; // 비공개 프로퍼티를 보호할때 모듈패턴 사용
+      show = function (num) { // 공개 프로퍼티
+        return num + a;
+      }
+
+      return {
+        show: show
+      }
+    })();
+
+    myapp.show(10);
+  </script>
+</body>
+</html>

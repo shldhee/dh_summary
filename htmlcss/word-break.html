@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    #wrap {
+      width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: lavender;
+    }
+    p {
+      border: 1px solid #000;
+      width: 400px;
+      padding: 10px;
+      background: skyblue;
+    }
+
+    .break01 { word-break: normal;} // 한·글·좋·아·요, 这·是·一·些·汉·字,·and·some·Latin,·و·کمی·نوشتنن·عربی·และ·ตัวอย่าง·การเขียน·ภาษาไทย. 한글은 음절별로, 영어는 단어별로
+    .break02 { word-break: break-all;} // 한·글·어·좋·아·요, 这·是·一·些·汉·字,·a·n·d·s·o·m·e·L·a·t·i·n,·و·ﮐ·ﻤ·ﻰ·ﻧ·ﻮ·ﺷ·ﺘ·ﻦ·ﻋ·ﺮ·ﺑ·ﻰ,·แ·ล·ะ·ตั·ว·อ·ย่·า·ง·ก·า·ร·เ·ขี·ย·น·ภ·า·ษ·า·ไ·ท·ย. 한글,영어 모두 음절
+    .break03 { word-break: keep-all;} // 한글·좋아요,这是一些汉字,·and·some·Latin,·و·کمی·نوشتنن·عربی,·และตัวอย่างการเขียนภาษาไทย. 한글, 영어도 단어
+    .break04 { word-break: break-word;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <h1>word-break CSS 속성은 텍스트가 내용 상자를 오버플로 할 때마다 브라우저에서 줄 바꿈을 삽입해야하는지 여부를 지정합니다.</h1>
+    <p class="break01">word-break CSS 속성은 텍스트가 내용 상자를 오버플로 할 때마다 브라우저에서 줄 바꿈을 삽입해야하는지 여부를 지정합니다. normal</p>
+    <p class="break02">word-break CSS 속성은 텍스트가 내용 상자를 오버플로 할 때마다 브라우저에서 줄 바꿈을 삽입해야하는지 여부를 지정합니다. break-all</p>
+    <p class="break03">word-break CSS 속성은 텍스트가 내용 상자를 오버플로 할 때마다 브라우저에서 줄 바꿈을 삽입해야하는지 여부를 지정합니다. keep-all (한글일때)단어별로 짝지어 의미있게 줄바꿈 해준다.</p>
+    <p class="break04">word-break CSS 속성은 텍스트가 내용 상자를 오버플로 할 때마다 브라우저에서 줄 바꿈을 삽입해야하는지 여부를 지정합니다. break-word</p>
+
+    <p class="break01">efghijklmnpokneuqasdlkfjasl;fbcdefghijklmnpokneuqasdlkfjasl;f normal</p>
+    <p class="break02">efghijklmnpokneuqasdlkfjasl;fbcdefghijklmnpokneuqasdlkfjasl;f break-all</p>
+    <p class="break03">efghijklmnpokneuqasdlkfjasl;fbcdefghijklmnpokneuqasdlkfjasl;f keep-all 단어별로 짝지어 의미있게 줄바꿈 해준다.</p>
+    <p class="break04">efghijklmnpokneuqasdlkfjasl;fbcdefghijklmnpokneuqasdlkfjasl;f break-word</p>
+  </div>
+  <h2>word-break 는 말 그대로 단어를 자르는 겁니다. 기복적으로 줄이 넘어갈 때는 단어단위로 잘려서 넘어가게 되어 있습니다. 그래서 띄어 쓰기를 하지 않고 글을 쓴다면 한 단어로 인식하여서 width 를 넘어가도 줄바꿈이 되지 않습니다. 그럴 때 word-break 를 사용해주면 줄바꿈이 가능하게 됩니다.</h2>
+
+  http://wit.nts-corp.com/2017/07/25/4675
+</body>
+</html>

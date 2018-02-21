@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      overflow: scroll;
+    }
+
+    #wrap {
+      width: 2000px;
+      height: 2000px;
+      margin: 20px auto;
+      background: gray;
+      overflow: scroll;
+    }
+
+    .box {
+      width: 1000px;
+      height: 1000px;
+      background: royalblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div class="box"></div>
+  </div>
+  <script>
+    var last_known_scroll_position = 0;
+    var ticking = false;
+
+    function doSomething(scroll_pos) {
+
+      // do something with the scroll position
+    }
+
+    window.addEventListener('scroll', function (e) {
+
+      last_known_scroll_position = window.scrollY;
+      console.log(last_known_scroll_position);
+      console.log(window.scrollX);
+
+      // if (!ticking) {
+
+      //   window.requestAnimationFrame(function () {
+      //     doSomething(last_known_scroll_position);
+      //     ticking = false;
+      //   });
+
+      //   ticking = true;
+
+      // }
+
+    });
+  </script>
+</body>
+
+</html>
