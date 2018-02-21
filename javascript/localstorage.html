@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="tow-thirds">
+    <form id="application" action="#">
+        <label for="username">이름</label>
+        <input type="text" id="username" name="username" value=""> <br />
+        <label for="answer">답변</label>
+        <textarea id="answer" name="answer"></textarea>
+        <input type="submit">
+    </form>
+  </div>
+
+
+  <script type="text/javascript">
+      if(localStorage) {
+        console.log('준비중...');
+
+        var txtUsername = document.getElementById('username');
+        var txtAnswer = document.getElementById('answer');
+
+        txtUsername.value = localStorage.getItem('username');
+        txtAnswer.value = localStorage.getItem('answer');
+
+        txtUsername.addEventListener('input', function () {
+          localStorage.setItem('username', txtUsername.value);
+        }, false);
+
+        txtAnswer.addEventListener('input', function () {
+          localStorage.setItem('answer', txtAnswer.value);
+        }, false);
+      } else {
+        console.log('없다...');
+      }
+  </script>
+</body>
+</html>
