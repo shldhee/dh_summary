@@ -4,43 +4,27 @@
 
 ```js
 <div class="bxsliderWrap" style="visibility:hidden; opacity:0;">
-<<<<<<< HEAD
   <ul class="bxslider">//...</ul>
-=======
-  <ul class="bxslider">
-    //...
-  </ul>
->>>>>>> 2319a7523014d9092e541a7110c3ed80c40a5508
 </div>
 ```
 
 * `onSliderLoad` 속성 추가
 
 ```js
-<<<<<<< HEAD
 $('.bxslider').bxSlider({
-=======
-$(".bxslider").bxSlider({
->>>>>>> 2319a7523014d9092e541a7110c3ed80c40a5508
   auto: true,
   autoControls: true,
   captions: true,
   pause: 7000,
   onSliderLoad: function() {
-<<<<<<< HEAD
     $('.bxsliderWrap')
       .css('visibility', 'visible')
       .animate({ opacity: 1 });
   },
-=======
-    $(".bxsliderWrap").css("visibility", "visible").animate({opacity:1});
-  }
->>>>>>> 2319a7523014d9092e541a7110c3ed80c40a5508
 });
 ```
 
 **초기 스타일 줘서 안보이게 하고 bxslider 로드되면 그때 나타나게 한다.**
-<<<<<<< HEAD
 
 ## 2. bxslider - 텍스트 위로 흐르게
 
@@ -84,5 +68,3 @@ html {
 }
 ```
 
-=======
->>>>>>> 2319a7523014d9092e541a7110c3ed80c40a5508
